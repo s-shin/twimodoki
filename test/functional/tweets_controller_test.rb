@@ -7,9 +7,9 @@ class TweetsControllerTest < ActionController::TestCase
     @tweet.user_id = @alice.id
     @alice.tweets << @tweet
     
-    # Aliceでログインしているセッション
     @request.session = ActionController::TestSession.new
-    @request.session[:user_id] = @alice.id
+    login_as_alice
+    access_to_root
     
     @update = {
       content: "hogehoge"
@@ -32,7 +32,7 @@ class TweetsControllerTest < ActionController::TestCase
       post :create, tweet: @update
     end
 
-    assert_redirected_to tweet_path(assigns(:tweet))
+    assert_redirected_to :back
   end
 
   test "should show tweet" do
@@ -55,6 +55,19 @@ class TweetsControllerTest < ActionController::TestCase
       delete :destroy, id: @tweet
     end
 
-    assert_redirected_to tweets_path
+    assert_redirected_to :back
   end
+  
+  private 
+  
+  def login_as_alice
+    # Aliceでログインしているセッション
+    alice = users(:alice)
+    @request.session[:user_id] = alice.id
+  end
+  
+  def access_to_root
+    @request.env['HTTP_REFERER'] = root_url
+  end
+
 end

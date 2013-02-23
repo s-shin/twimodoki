@@ -1,12 +1,19 @@
 <div class="tweet">
 	<% if tweet.user == @current_user %>
-	<a class="destroy" href="<%= "#" %>">
+	<a class="destroy" href="<%= tweet_path(tweet) %>" data-method="delete" rel="nofollow" data-confirm="Are you sure?">
 		<i class="icon-trash"></i>
 	</a>
 	<% end %>
-	<a href="<%= root_path + tweet.user.name %>"><%=h tweet.user.name %></a>
+	<div class="name">
+		<a href="<%= pages_user_path(name: tweet.user.name) %>">
+			<i class="icon-twitter"></i>
+			<%=h tweet.user.name %>
+		</a>
+	</div>
 	<p style="display: inline">
-		<%= raw hbr tweet.content %>
+		<%# raw sanitize nl2br auto_link tweet.content %>
+		<%= raw auto_link hbr tweet.content %>
+		<br />
+		<small class="muted"><%=h time_ago_in_words tweet.created_at %>前</small>
 	</p>
-	<p><small class="muted"><%=h time_ago_in_words tweet.created_at %>前</small></p>
 </div>

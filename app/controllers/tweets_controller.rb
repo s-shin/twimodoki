@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
@@ -45,7 +47,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to back_url }
         format.json { render json: @tweet, status: :created, location: @tweet }
       else
         format.html { render action: "new" }
@@ -74,11 +76,27 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1.json
   def destroy
     @tweet = Tweet.find(params[:id])
-    @tweet.destroy
+    
+    # 自分のツイートなら削除
+    if @current_user.id == @tweet.user.id
+      @tweet.destroy
 
-    respond_to do |format|
-      format.html { redirect_to tweets_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to back_url, notice: "削除しました。" }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to back_url, notice: "削除に失敗しました。" }
+        format.json { head :no_content }
+      end
     end
   end
+  
+  private
+  
+  def back_url
+    request.env['HTTP_REFERER'] ? :back : root_url
+  end
+  
 end

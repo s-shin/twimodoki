@@ -1,7 +1,7 @@
 <% if @user %>
-	<%= render layout: "two_column", locals: {user: @user} do %>
+	<%= render layout: "two_column", locals: {user: @user, profile: "profile2"} do %>
 	<h2><%=h @user.name %>さんのツイート</h2>
-	<div class="tweets">
+	<div class="tweets bordered-list">
 		<%= render @tweets %>
 		<%= paginate @tweets %>
 	</div>

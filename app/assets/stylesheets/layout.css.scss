@@ -133,6 +133,10 @@ form.form-horizontal {
 	}
 }
 
+.pager ul {
+	margin-left: 0;
+}
+
 @media (max-width: 767px) {
 	.affix {
 		position: static;

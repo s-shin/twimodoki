@@ -10,12 +10,6 @@ Twimodoki::Application.routes.draw do
     delete "logout" => :destroy
   end
 
-  controller :search do
-    get "search" => :index
-    get "search/index"
-    get "search/users"
-  end
-
   get "pages/index"
   get "pages/registered"
   get "pages/follow"
@@ -23,6 +17,7 @@ Twimodoki::Application.routes.draw do
   get "pages/following"
   get "pages/followers"
   get "pages/user"
+  get "pages/search"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

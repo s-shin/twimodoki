@@ -44,3 +44,6 @@ gem "twitter-bootstrap-rails"
 # paginate
 gem "kaminari"
 
+# auto link
+gem "rails_autolink"
+

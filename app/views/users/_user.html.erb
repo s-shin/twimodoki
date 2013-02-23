@@ -1,0 +1,32 @@
+<div class="user">
+	<div class="pull-right">
+		<% unless user.id == @current_user.id %>
+			<% if @current_user.friends.find { |u| u.id == user.id } %>
+				<%= link_to "Unfollow", pages_unfollow_path(id: user.id), class: "btn", confirm: "フォロー解除してよいですか。"  %>
+			<% else %>
+				<%= link_to "Follow", pages_follow_path(id: user.id), class: "btn", confirm: "フォローしてよいですか。" %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="name">
+		<a href="<%= pages_user_path(name: user.name) %>">
+			<i class="icon-twitter"></i> <%= user.name %>
+		</a>
+		<%= user.another_name %>
+	</div>
+	<% latest_tweet(user) do |tweet| %>
+	<p>
+		<small class="muted">
+			<%= tweet.content %>
+			<%= time_ago_in_words tweet.created_at %>
+		</small>
+	</p>
+	<% end %>
+	<% if user.tweets.length == 0 %>
+	<p>
+		<small class="muted">
+			ツイートはありません。
+		</small>
+	</p>
+	<% end %>
+</div>

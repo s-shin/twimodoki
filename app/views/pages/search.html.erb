@@ -1,5 +1,5 @@
 <% if @query %>
-「<%= @query %>」の検索結果
+<h2>「<%= @query %>」の検索結果：</h2>
 <% else %>
 <h2><i class="icon-search"></i> 友達を見つけて、フォローしましょう！</h2>
 <p>ついもどきに登録済みの友達を検索出来ます。</p>
@@ -16,21 +16,13 @@
 	<p class="help-block">ユーザ名や名前で検索</p>
 <% end %>
 
+<%= render partial: "notice", locals: {notice: notice} %>
+
 <% if @results and @results.length > 0 %>
-	<% @results.each do |user| %>
-		<p><%= link_to user.name, root_path + user.name %> <%= user.another_name %></p>
-		<% latest_tweet(user) do |tweet| %>
-			<p><%=h tweet.content %> <i><%=h time_ago_in_words tweet.created_at %></i></p>
-		<% end %>
-		<% unless user.id == @current_user.id %>
-			<% unless user.friends.find { |u| u.id == user.id } %>
-				<%= link_to "Follow", pages_follow_path(id: user.id), class: "btn" %>
-			<% else %>
-				<%= link_to "Unfollow", pages_unfollow_path(id: user.id), class: "btn" %>
-			<% end %>
-		<% end %>
-	<% end %>
-	<%= paginate @results %>
+<div class="users bordered-list striped">
+	<%= render @results %>
+</div>
+<%= paginate @results %>
 <% elsif @results %>
 <div class="alert alert-error alert-block">
 	<p>対象のユーザは見つかりません。</p>

@@ -2,16 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.pages {
+body.pages {
 	
 	h2 {
 		font-size: 1.5em;
-		border-bottom: dashed 1px #CCF;
 	}
 	
 	.tweet {
-		border-bottom: dashed 1px #CCF;
-		margin: 10px 0;
+		padding: 10px;
+		
+		.name {
+			display: inline;
+			font-weight: bold;
+		}
 		
 		.destroy {
 			float: right;
@@ -19,12 +22,14 @@
 		}
 	}
 
-	.profile {
-		background-color: #EEF;
+	.profile, .profile2 {
+		background-color: #FCFCFF;
 		border-radius: 10px;
 		padding: 15px;
 		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) inset;
-		
+	}
+
+	.profile {
 		.name {
 			font-size: 1.7em;
 			line-height: 1;
@@ -41,17 +46,75 @@
 		.num {
 			font-size: 2em;
 		}
+	}
+	
+	.profile2 {
+		.name {
+			margin-bottom: 10px;
+		}
 		
+		a {
+			display: block;
+		}
+		
+		a.tweet-num {
+			margin: 10px 0 0;
+			
+			.num {
+				float: right;
+				background-color: #DDF;
+				font-size: 0.9em;
+				line-height: 1.5;
+				border-radius: 1em;
+				padding: 0 0.7em;
+			}
+		}
+	}
+	
+	.user {
+		padding: 10px;
+		overflow: hidden;
+		
+		.name {
+			margin-bottom: 5px;
+			
+			a {
+				font-weight: bold;
+			}
+		}
+		
+		p {
+			margin: 0;
+		}
+	}
+	
+	.bordered-list {
+		> * {
+			border-bottom: dashed 1px #CCF;
+		}
+		> :first-child {
+			border-top: dashed 1px #CCF;
+		}
+	}
+	
+	.striped {
+		> :nth-child(2n) {
+			background-color: #FAFAFA;
+		}
 	}
 	
 }
 
 @media (max-width: 767px) {
-	.profile {
-		.span4 {
-			float: left;
-			width: 31.491712707182323%;
+	body.pages {
+		.profile {
+			.span4 {
+				float: left;
+				width: 31.491712707182323%;
+			}
 		}
 	}
 }
+
+
 

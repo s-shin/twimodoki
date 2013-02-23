@@ -1,27 +1,13 @@
 <% if @user %>
 	<%= render layout: "two_column", locals: {user: @user} do %>
-	<h2><%= @user.name %> は <%= @user.friends.length %> 人をフォローしています。</h2>
+		<h2><%= @user.name %> は <%= @user.friends.length %> 人をフォローしています。</h2>
+		<%= render partial: "notice", locals: {notice: notice} %>
 		<% if @user.friends.length > 0 %>
-		<table class="table table-striped">
-			<tr>
-				<th>ユーザ名／名前</th><th>操作</th>
-			</tr>
-			<% @user.friends.each do |user| %>
-			<tr>
-				<td>
-					<p><%= user.name %> - <%= user.another_name %></p>
-					<% latest_tweet(user) do |tweet| %>
-					<p><%= tweet.content %></p>
-					<p><%= time_ago_in_words tweet.created_at %></p>
-					<% end %>
-				</td>
-				<td>
-				</td>
-			</tr>
-			<% end %>
-		</table>
+		<div class="bordered-list striped">
+			<%= render @user.friends %>
+		</div>
 		<% else %>
-			<p>フォローしている人がいません。</p>
+		<p>フォローしている人がいません。</p>
 		<% end %>
 	<% end %>
 <% else %>

@@ -1,0 +1,12 @@
+<% if @user %>
+	<%= render layout: "two_column", locals: {user: @user} do %>
+	<h2><%=h @user.name %>さんのツイート</h2>
+	<div class="tweets">
+		<%= render @tweets %>
+		<%= paginate @tweets %>
+	</div>
+	<% end %>
+<% else %>
+<p>該当ユーザが存在しません。</p>
+<% end %>
+

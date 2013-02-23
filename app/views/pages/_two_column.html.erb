@@ -1,0 +1,10 @@
+<div class="row-fluid">
+	<div class="span8">
+		<%= yield %>
+	</div>
+	<div class="span4">
+		<div data-spy="affix" data-offset-top="60" style="top: 10px">
+			<%= render partial: "profile", locals: {user: user} %>
+		</div>
+	</div>
+</div>

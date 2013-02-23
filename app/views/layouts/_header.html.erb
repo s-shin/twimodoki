@@ -1,0 +1,20 @@
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<h1><a href="<%= root_path %>" class="brand">
+				<i class="icon-twitter"></i>
+				<%= image_tag "logo.png", alt: "Twimodoki" %>
+			</a></h1>
+			<ul class="nav pull-right">
+				<li><%= link_to "ホーム", root_path %></li>
+				<% if logged_in? %>
+				<li><%= link_to "友だちを検索", search_users_path %></li>
+				<li><%= link_to "ログアウト", logout_path %></li>
+				<% else %>
+				<li><%= link_to "ユーザ登録", new_user_path %></li>
+				<li><%= link_to "ログイン", login_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

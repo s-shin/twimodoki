@@ -1,0 +1,39 @@
+<% if @query %>
+「<%= @query %>」の検索結果
+<% else %>
+<h2><i class="icon-search"></i> 友達を見つけて、フォローしましょう！</h2>
+<p>ついもどきに登録済みの友達を検索出来ます。</p>
+<% end %>
+
+<%= form_tag(nil, method: :get) do %>
+	<% unless @query %>
+	<%= label :q, "誰を検索しますか？" %>
+	<% end %>
+	<div class="input-append">
+		<%= text_field_tag :q, @query %>
+		<button class="btn">検索</button>
+	</div>
+	<p class="help-block">ユーザ名や名前で検索</p>
+<% end %>
+
+<% if @results and @results.length > 0 %>
+	<% @results.each do |user| %>
+		<p><%= link_to user.name, root_path + user.name %> <%= user.another_name %></p>
+		<% latest_tweet(user) do |tweet| %>
+			<p><%=h tweet.content %> <i><%=h time_ago_in_words tweet.created_at %></i></p>
+		<% end %>
+		<% unless user.id == @current_user.id %>
+			<% unless user.friends.find { |u| u.id == user.id } %>
+				<%= link_to "Follow", pages_follow_path(id: user.id), class: "btn" %>
+			<% else %>
+				<%= link_to "Unfollow", pages_unfollow_path(id: user.id), class: "btn" %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<%= paginate @results %>
+<% elsif @results %>
+<div class="alert alert-error alert-block">
+	<p>対象のユーザは見つかりません。</p>
+</div>
+<% end %>
+

@@ -1,0 +1,57 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pages {
+	
+	h2 {
+		font-size: 1.5em;
+		border-bottom: dashed 1px #CCF;
+	}
+	
+	.tweet {
+		border-bottom: dashed 1px #CCF;
+		margin: 10px 0;
+		
+		.destroy {
+			float: right;
+			padding-right: 10px;
+		}
+	}
+
+	.profile {
+		background-color: #EEF;
+		border-radius: 10px;
+		padding: 15px;
+		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) inset;
+		
+		.name {
+			font-size: 1.7em;
+			line-height: 1;
+			color: #88F;
+		}
+		
+		hr {
+			margin: 10px 0 20px;
+		}
+		
+		a {
+			display: block;
+		}
+		.num {
+			font-size: 2em;
+		}
+		
+	}
+	
+}
+
+@media (max-width: 767px) {
+	.profile {
+		.span4 {
+			float: left;
+			width: 31.491712707182323%;
+		}
+	}
+}
+

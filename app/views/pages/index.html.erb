@@ -1,0 +1,19 @@
+<% if logged_in? %>
+<div class="row-fluid">
+	<div class="span8">
+		<%= render "tweets/form" %>
+		<h2>ホーム</h2>
+		<div class="tweets">
+			<%= render @tweets %>
+			<%= paginate @tweets %>
+		</div>
+	</div>
+	<div class="span4">
+		<div data-spy="affix" data-offset-top="60" style="top: 10px">
+			<%= render partial: "profile", locals: {user: @current_user} %>
+		</div>
+	</div>
+</div>
+<% else %>
+未ログイン
+<% end %>

@@ -1,0 +1,29 @@
+<% if @user %>
+	<%= render layout: "two_column", locals: {user: @user} do %>
+	<h2><%= @user.name %> は <%= @user.friends.length %> 人をフォローしています。</h2>
+		<% if @user.friends.length > 0 %>
+		<table class="table table-striped">
+			<tr>
+				<th>ユーザ名／名前</th><th>操作</th>
+			</tr>
+			<% @user.friends.each do |user| %>
+			<tr>
+				<td>
+					<p><%= user.name %> - <%= user.another_name %></p>
+					<% latest_tweet(user) do |tweet| %>
+					<p><%= tweet.content %></p>
+					<p><%= time_ago_in_words tweet.created_at %></p>
+					<% end %>
+				</td>
+				<td>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+		<% else %>
+			<p>フォローしている人がいません。</p>
+		<% end %>
+	<% end %>
+<% else %>
+<p>該当ユーザが存在しません。</p>
+<% end %>

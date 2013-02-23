@@ -1,0 +1,28 @@
+<%= form_for(@tweet, html: {class: "tweet-form"}) do |f| %>
+	<% if @tweet.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+		<ul>
+		<% @tweet.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<small class="pull-right">140文字で入力して下さい。 <i class="icon-exclamation-sign"></i> 全角半角問わず</small>
+	<%= f.label :content, "いまなにしてる？", class: "big" %>
+	
+	<%= f.text_area :content, rows: 3, class: "input-block-level" %>
+	
+	<%= f.submit "投稿する", class: "btn pull-right" %>
+	
+	<% latest_tweet do |tweet| %>
+		<p><b>最新のつぶやき:</b>
+			<%= raw hbr tweet.content %>
+			<small class="muted"><%=h time_ago_in_words tweet.created_at %>前</small>
+		</p>
+	<% end %>
+	
+<% end %>

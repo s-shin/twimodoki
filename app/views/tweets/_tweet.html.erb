@@ -1,0 +1,12 @@
+<div class="tweet">
+	<% if tweet.user == @current_user %>
+	<a class="destroy" href="<%= "#" %>">
+		<i class="icon-trash"></i>
+	</a>
+	<% end %>
+	<a href="<%= root_path + tweet.user.name %>"><%=h tweet.user.name %></a>
+	<p style="display: inline">
+		<%= raw hbr tweet.content %>
+	</p>
+	<p><small class="muted"><%=h time_ago_in_words tweet.created_at %>前</small></p>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# password: foobar
+alice:
+  another_name: Alice
+  name: alice
+  password_digest: $2a$10$P5blbgXXyM7SUlZpQ05muOjvJUQh0fvHXBq5BsZHz3dn89CW/A5HG
+  email: alice@example.com
+  private: false
+
+# password: 0123456789
+bob:
+  another_name: Bob
+  name: bob
+  password_digest: $2a$10$1iCXEj2ti9KULvf9pbjLMeAUPOHwqtunm4Ii5FMuZXjZM8wLjKjpG
+  email: bob@example.com
+  private: false

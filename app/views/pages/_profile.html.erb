@@ -1,0 +1,18 @@
+<div class="profile">
+	<div class="name"><i class="icon-twitter"></i> <%= user.name %></div>
+	<hr />
+	<div class="row-fluid">
+		<div class="span4"><a href="<%= pages_following_path(name: user.name) %> ">
+			<span class="num"><%= user.friends.length %></span><br />
+			<small>フォローしている</small>
+		</a></div>
+		<div class="span4"><a href="<%= pages_followers_path(name: user.name) %>">
+			<span class="num"><%= user.followers.length %></span><br />
+			<small>フォローされている</small>
+		</a></div>
+		<div class="span4"><a href="<%= pages_user_path(name: user.name) %>">
+			<span class="num"><%= user.tweets.length %></span><br />
+			<small>投稿数</small>
+		</a></div>
+	</div>
+</div>

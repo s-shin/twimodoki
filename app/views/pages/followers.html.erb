@@ -3,7 +3,7 @@
 		<h2><%= @user.name %> は <%= @user.followers.length %> 人にフォローされています。</h2>
 		<%= render partial: "notice", locals: {notice: notice} %>
 		<% if @user.followers.length > 0 %>
-		<div class="bordered-list striped">
+		<div class="users bordered-list striped">
 			<%= render @user.followers %>
 		</div>
 		<% else %>

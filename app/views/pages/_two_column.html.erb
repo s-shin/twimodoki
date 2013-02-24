@@ -3,7 +3,7 @@
 		<%= yield %>
 	</div>
 	<div class="span4">
-		<div data-spy="affix" data-offset-top="60" style="top: 10px">
+		<div class="my-affix">
 			<%= render partial: (defined?(profile) ? profile : "profile"), locals: {user: user} %>
 		</div>
 	</div>

@@ -7,7 +7,7 @@ body.pages {
 	h2 {
 		font-size: 1.5em;
 	}
-	
+
 	.tweet {
 		padding: 10px;
 		
@@ -71,6 +71,10 @@ body.pages {
 		}
 	}
 	
+	.tweets, .users {
+		margin-bottom: 10px;
+	}
+	
 	.user {
 		padding: 10px;
 		overflow: hidden;
@@ -107,10 +111,16 @@ body.pages {
 
 @media (max-width: 767px) {
 	body.pages {
-		.profile {
+		.profile, .profile2 {
 			.span4 {
 				float: left;
 				width: 31.491712707182323%;
+			}
+			.row-fluid [class*="span"] {
+				margin-left: 2.127659574468085%;
+			}
+			.row-fluid [class*="span"]:first-child {
+				margin-left: 0;
 			}
 		}
 	}

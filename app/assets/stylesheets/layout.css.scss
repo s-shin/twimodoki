@@ -58,6 +58,25 @@ header {
 		
 	}
 }
+@media (max-width: 767px) {
+	header {
+		.navbar-inverse .navbar-inner, .navbar-inner {
+			.btn-navbar {
+				background: #AAF;
+			
+				&:hover {
+					background: #BBF;
+				}
+			}
+			.nav li a {
+				&:hover {
+					background: rgba(0, 0, 0, 0.1);
+				}
+			}
+		}
+	}
+}
+
 
 html, body {
 	height: 100%;
@@ -71,6 +90,7 @@ body {
 
 #container {
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;	
 	height: 100%;
 	
 	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.39) 46%, rgba(204,237,255,0.9) 84%); /* FF3.6+ */
@@ -85,12 +105,6 @@ body {
 	padding-top: 40px;
 }
 @media (max-width: 767px) {
-	#container {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
-@media (max-width: 979px) {
 	#container-inner {
 		padding-top: 0;
 	}
@@ -101,12 +115,25 @@ body {
 	border-radius: 10px;
 	background-color: #FFF;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-	
+}
+#main-inner {
+	padding: 20px;
+	overflow: hidden;
+}
+@media (max-width: 767px) {
+	#main {
+		margin: 20px;
+	}
 	#main-inner {
-		padding: 20px;
-		overflow: hidden;
+		padding: 15px;
 	}
 }
+@media (max-width: 321px) {
+	#main {
+		margin: 10px;
+	}
+}
+
 
 footer {
 	text-align: center;
@@ -143,6 +170,12 @@ form.form-horizontal {
 		width: auto;
 		top: 0;
 	}
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
 
+@media (max-width: 321px) {
+}
 

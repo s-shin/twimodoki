@@ -4,6 +4,11 @@
 		<i class="icon-trash"></i>
 	</a>
 	<% end %>
+	<% if tweet.photo? %>
+	<a href="<%= tweet.photo.url %>" class="photo" data-colorbox="true">
+		<i class="icon-picture"></i>
+	</a>
+	<% end %>
 	<div class="name">
 		<a href="<%= pages_user_path(name: tweet.user.name) %>">
 			<i class="icon-twitter"></i>

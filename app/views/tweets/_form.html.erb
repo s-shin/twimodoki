@@ -12,12 +12,50 @@
 	<% end %>
 
 	<small class="pull-right">140文字で入力して下さい。 <i class="icon-exclamation-sign"></i> 全角半角問わず</small>
-	<%= f.label :content, "いまなにしてる？", class: "big" %>
 	
-	<%= f.text_area :content, rows: 3, class: "input-block-level" %>
+	<div class="content-area">
+		<%= f.label :content, "いまなにしてる？", class: "big" %>
+		<%= f.text_area :content, rows: 3, class: "input-block-level" %>
+		
+		<a href="#tweet-form-photo-modal" class="select-photo" data-toggle="modal"><i class="icon-camera"></i></a>
+
+		<!-- === ダイアログここから === -->
+		<div id="tweet-form-photo-modal" class="modal hide fade">
+			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<ul class="nav nav-tabs">
+					<li><a href="#tweet-form-upload-photo">画像アップロード</a></li>
+					<li><a href="#tweet-form-take-a-photo">写真撮影</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane" id="tweet-form-upload-photo">
+						<div class="upload-photo">
+							<div class="default">
+								<p><i class="icon-upload"></i> 写真をアップロード</p>
+								<small>このエリアに画像ファイルをドラッグ＆ドロップすることでも<br />アップロードが可能です。</small>
+							</div>
+							<div class="selected">
+								<p><img alt="" /></p>
+								<a href="javascript: void 0;" class="destroy">&times; 削除</a>
+								<!-- 画像が表示される -->
+							</div>
+						</div>
+						<span><%= f.file_field :photo, accept: "image/*" %></span>
+					</div>
+					<div class="tab-pane" id="tweet-form-take-a-photo">
+						<p>撮影</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+			</div>
+		</div>
+		<!-- === ダイアログここまで === -->
+	</div>
 	
 	<%= f.submit "投稿する", class: "btn pull-right" %>
-	
+
 	<% latest_tweet do |tweet| %>
 		<p><b>最新のつぶやき:</b>
 			<%= raw hbr tweet.content %>

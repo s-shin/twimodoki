@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222151159) do
+ActiveRecord::Schema.define(:version => 20130224103401) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
@@ -22,9 +22,13 @@ ActiveRecord::Schema.define(:version => 20130222151159) do
 
   create_table "tweets", :force => true do |t|
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", :force => true do |t|

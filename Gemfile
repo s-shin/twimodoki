@@ -37,13 +37,22 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 # paginate
-gem "kaminari"
+gem 'kaminari'
 
 # auto link
-gem "rails_autolink"
+gem 'rails_autolink'
+
+# upload image
+gem "paperclip", "~> 3.0"
+gem "rmagick"
+
+group :development, :test do
+  gem 'webrat'
+  gem 'cucumber'
+end
 

@@ -1,3 +1,91 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.tweet-form {
+	
+	label.big {
+		font-size: 1.4em;
+	}
+	
+	.content-area {
+		position: relative;
+	}
+
+	a.select-photo {
+		position: absolute;
+		right: 12px;
+		bottom: 2px;
+		font-size: 20px;
+		color: #ACACAC;
+		opacity: 1;
+		display: inline-block;
+		padding: 0.2em 0.3em;
+		
+		cursor: pointer;
+		
+		&:hover {
+			opacity: 0.5;
+			text-decoration: none;
+		}
+	}
+	
+	input#tweet_photo {
+		display: none;
+	}
+	.upload-photo {
+		text-align: center;
+		color: #333;
+		cursor: pointer;
+		border: 1px solid #666;
+		line-height: 1.5;
+		
+		.default {
+			padding: 80px 0;
+			p {
+				font-size: 40px;
+				margin: 0;
+			}
+			small {
+				font-size: 15px;
+				display: none;
+			}
+			&:hover {
+				background-color: #EEF;
+			}
+		}
+		
+		.selected {
+			display: none;
+			padding: 20px 0;
+			img {
+				max-height: 200px;
+			}
+		}
+		
+	}
+
+}
+
+.ie form.tweet-form {
+	#tweet-form-upload-photo {
+		position: relative;
+		overflow: hidden;
+		input#tweet_photo {
+			position: absolute;
+			top: 0;
+			padding: 20000px 0 0 20000px;
+			background: transparent;
+			opacity: 0;
+		}
+	}
+}
+
+.draganddrop form.tweet-form {
+	.upload-photo {
+		.default small {
+			display: inline;
+		}
+	}
+}
+

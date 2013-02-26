@@ -48,11 +48,21 @@ gem 'kaminari'
 gem 'rails_autolink'
 
 # upload image
-gem "paperclip", "~> 3.0"
-gem "rmagick"
+gem 'paperclip', '~> 3.0'
+gem 'rmagick'
 
+# testing
 group :development, :test do
   gem 'webrat'
   gem 'cucumber'
 end
+
+# deploy
+gem 'capistrano'
+
+group :production do
+  # web server for Rack
+  gem 'unicorn'
+end
+
 

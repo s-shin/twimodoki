@@ -59,6 +59,7 @@ end
 
 # deploy
 gem 'capistrano'
+gem 'capistrano_colors'
 
 group :production do
   # web server for Rack

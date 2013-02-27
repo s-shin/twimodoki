@@ -4,8 +4,9 @@ require "capistrano_colors"
 require "bundler/capistrano"
 
 # RVMの設定
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+# NOTE: ローカルではrvm使っていないのでこうしたが本当にいいのか？
 require "rvm/capistrano"
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 set :rvm_ruby_string, '1.9.3'
 set :rvm_type, :user
 
@@ -14,14 +15,17 @@ set :user, "shin"
 set :domain, "157.7.139.50"
 set :application, "twimodoki"
 
+# sudoを使うので設定
+default_run_options[:pty] = true
+
 # リポジトリの設定
 set :scm, :git
-set :repository, "ssh://onamae-vps/~/git/#{application}.git"
+set :repository, "ssh://#{user}@#{domain}/~/git/#{application}.git"
 set :branch, "master"
 
 # デプロイの設定
 set :deploy_via, :remote_cache
-set :deploy_to, "/var/#{user}/#{application}"
+set :deploy_to, "/var/www/#{application}"
 set :rails_env, "production"
 
 # 役割の設定

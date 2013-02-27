@@ -60,6 +60,7 @@ end
 # deploy
 gem 'capistrano'
 gem 'capistrano_colors'
+gem 'rvm-capistrano'
 
 group :production do
   # web server for Rack

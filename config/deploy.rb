@@ -60,7 +60,7 @@ after "deploy:setup", "setup:fix_permissions"
 # Unicorn用タスク
 namespace :deploy do
   task :start, :roles => :app do
-    run "cd #{current_path}; bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
+    run "cd #{current_path}; bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D --path /twimodoki"
   end
   
   task :restart, :roles => :app do

@@ -1,8 +1,7 @@
 <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+    <div class="errors">
+  		<h4><%= @user.errors.count %> 個の入力エラーがあります。</h4>
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -19,7 +18,7 @@
   </div>
   <div class="control-group">
     <%= f.label :name, "ユーザ名", class: "control-label" %>
-		<div class="controls">
+		<div class="controls username">
 			<%= f.text_field :name, maxlength: 15 %>
 			<p class="help-block">あなたのURL: <%= root_url %><span>...</span></p>
 		</div>

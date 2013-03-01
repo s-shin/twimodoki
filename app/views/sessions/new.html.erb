@@ -1,7 +1,9 @@
 
 <div class="row-fluid">
-	<div class="span9">
-		<h2>ログイン</h2>
+	<div class="span8">
+    <div class="column-header">
+      <h2>ログイン</h2>
+    </div>
 		<%= form_tag(nil, class: "form-horizontal") do %>
 		  <div class="control-group">
 		    <%= label_tag :name, "ユーザ名", class: "control-label" %>
@@ -17,12 +19,12 @@
 		  </div>
 		  <div class="control-group">
 				<div class="controls">
-				  <%= submit_tag "アカウントを作成する", class: "btn" %>
+				  <%= submit_tag "ログイン", class: "btn" %>
 				</div>
 		  </div>
 		<% end %>
 	</div>
-	<div class="span3">
+	<div class="span4">
 		ユーザ登録（無料）
 		<%= link_to "ユーザ登録", new_user_path, class: "btn" %>
 	</div>

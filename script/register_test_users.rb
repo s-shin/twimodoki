@@ -1,5 +1,5 @@
 
-["foo", "bar", "hoge", "piyo"].each do |name|
+["foobar", "hoge", "piyo"].each do |name|
   user = User.new({
     name: name,
     another_name: name,

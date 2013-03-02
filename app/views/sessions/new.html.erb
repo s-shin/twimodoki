@@ -5,16 +5,31 @@
       <h2>ログイン</h2>
     </div>
 		<%= form_tag(nil, class: "form-horizontal") do %>
+      <% if notice %>
+      <p class="alert"><%= notice %></p>
+      <% end %>
+      
+      <% if @user.errors.any? %>
+        <div class="errors">
+      		<h4><%= @user.errors.count %> 個の入力エラーがあります。</h4>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
 		  <div class="control-group">
 		    <%= label_tag :name, "ユーザ名", class: "control-label" %>
 				<div class="controls">
-					<%= text_field_tag :name %>
+					<%= text_field_tag :name, @user.name, required: "required" %>
 				</div>
 		  </div>
 		  <div class="control-group">
 		    <%= label_tag :password, "パスワード", class: "control-label" %>
 				<div class="controls">
-					<%= password_field_tag :password %>
+					<%= password_field_tag :password, @user.password, required: "required" %>
 				</div>
 		  </div>
 		  <div class="control-group">
@@ -25,8 +40,8 @@
 		<% end %>
 	</div>
 	<div class="span4">
-		ユーザ登録（無料）
-		<%= link_to "ユーザ登録", new_user_path, class: "btn" %>
+		<h4>ユーザ登録（無料）</h4>
+		<%= link_to "ユーザ登録", new_user_path, class: "btn btn-large btn-block btn-info" %>
 	</div>
 </div>
 

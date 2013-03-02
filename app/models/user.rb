@@ -10,14 +10,42 @@ class User < ActiveRecord::Base
   # Validations
   #---------------------------------
   
-  validates :email, :name, :another_name, presence: true
-  validates :name, uniqueness: true
-  validates :name, length: {
-    maximum: 15
-  }
-  validates :name, format: {
-    with: /[a-z0-9_]+/
-  }
+  validates :another_name, presence: true,
+    length: {
+      minimum: 4,
+      maximum: 20
+    },
+    format: {
+      # TODO: 本当にこれでいいのか確認する
+      # http://blog.goo.ne.jp/j_adversaria/e/474436565cd3d53d4ca4de22f594948b
+      with: /^([a-zA-Z0-9_-]|[^ -~｡-ﾟ])+$/
+    }
+  validates :name, presence: true, uniqueness: true,
+    length: {
+      minimum: 4,
+      maximum: 20
+    },
+    format: {
+      with: /^[a-zA-Z0-9_-]+$/
+    }
+  validates :password, presence: true,
+    length: {
+      # NOTE: 仕様ではこうだが、現実的には…
+      minimum: 4,
+      maximum: 8
+    },
+    format: {
+      with: /^[a-zA-Z0-9]+$/
+    }
+  validates :password_confirmation, presence: true
+  validates :email, presence: true, email: true,
+    length: { maximum: 100 }
+  
+  # password_digestのエラーは非表示
+  after_validation :hide_password_digest, on: :create
+  def hide_password_digest
+    self.errors.messages.delete(:password_digest)
+  end
   
   #---------------------------------
   # Relations

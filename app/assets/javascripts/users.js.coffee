@@ -6,6 +6,8 @@ $ ->
   
   username = $("body.users form .username")
   span = username.find("p span")
-  input = username.find("input").keyup () ->
-    span.text input.val()
+  input = username.find("input")
+  updateUrl = () -> span.text input.val()
+  input.keyup updateUrl
+  updateUrl()
 

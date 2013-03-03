@@ -23,6 +23,11 @@
 		<%= hidden_field_tag :photo_data %>
 		<%= hidden_field_tag :photo_name %>
 
+		<span class="select-photo">
+			<i class="icon-camera"></i>
+			<%= f.file_field :photo, accept: "image/*" %>
+		</span>
+		
 		<a href="#tweet-form-photo-modal" class="select-photo" data-toggle="modal"><i class="icon-camera"></i></a>
 
 		<!-- === ダイアログここから === -->

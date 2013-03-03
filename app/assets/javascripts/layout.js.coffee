@@ -2,7 +2,8 @@
 $ ->
 	
 	# colorbox
-	$("a[data-colorbox=true]").colorbox()
+	$("a[data-colorbox=true]").colorbox
+		maxWidth: "100%"
 	
 	# TODO: 古いブラウザで要動作確認
 	$("form").h5form()

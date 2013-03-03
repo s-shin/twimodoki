@@ -12,7 +12,7 @@ form.tweet-form {
 		position: relative;
 	}
 
-	a.select-photo {
+	.select-photo {
 		position: absolute;
 		right: 12px;
 		bottom: 2px;
@@ -27,6 +27,17 @@ form.tweet-form {
 		&:hover {
 			opacity: 0.5;
 			text-decoration: none;
+		}
+		
+		&.selected,
+		&.selected2 {
+			color: #F33;
+		}
+	}
+	
+	span.select-photo {
+		input {
+			display: none;
 		}
 	}
 	
@@ -104,10 +115,11 @@ form.tweet-form {
 }
 
 .ie form.tweet-form {
-	#tweet-form-upload-photo {
+	#tweet-form-upload-photo, span.select-photo {
 		position: relative;
 		overflow: hidden;
 		input#tweet_photo {
+			display: block;
 			position: absolute;
 			top: 0;
 			padding: 20000px 0 0 20000px;

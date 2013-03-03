@@ -4,15 +4,34 @@
 
 $ ->
 
-	form = $("form.tweet-form")
+	$form = $("form.tweet-form")
+	
+	#-----------------------
+	# D&D未サポートなら小規模版に
+	
+	do ->
+		id = "#tweet-form-photo-modal"
+		if Modernizr.draganddrop
+			$form.find("span.select-photo").remove()
+		else
+			$form.find("a[href=#{id}], id").remove()
+			$selectPhoto = $form.find("span.select-photo")
+			$input = $selectPhoto.find("input")
+			$selectPhoto.click (e) ->
+				e.stopPropagation()
+				$input.click()
+			$input.click (e) ->
+				e.stopPropagation()
+			$input.change (e) ->
+				$selectPhoto.addClass("selected")
 
 	#-----------------------
 	# 専用validation
 
 	do ->
-		$content = form.find("#tweet_content")
-		$wordCount = form.find("span.word-count")
-		$submit = form.find(":submit")
+		$content = $form.find("#tweet_content")
+		$wordCount = $form.find("span.word-count")
+		$submit = $form.find(":submit")
 			
 		updateWithContent = () ->
 			len = $content.val().length
@@ -31,51 +50,53 @@ $ ->
 	# タブの設定
 	
 	do ->
-		form.find(".nav-tabs a").click (e) ->
+		$form.find(".nav-tabs a").click (e) ->
 			e.preventDefault()
 			$(this).tab("show")
 		
-		form.find(".nav-tabs a:first").tab("show")
+		$form.find(".nav-tabs a:first").tab("show")
 	
 	#-----------------------
 	# アップロードの設定
 	
 	do ->
 		if Modernizr.draganddrop
-			input = form.find("input#tweet_photo")
-			uploadArea = form.find(".upload-photo")
-			img = uploadArea.find(".selected img")
+			$selectPhoto = $form.find("a.select-photo")
+			$input = $form.find("input#tweet_photo")
+			$uploadArea = $form.find(".upload-photo")
+			$img = $uploadArea.find(".selected img")
 		
 			load = (file) ->
 				reader = new FileReader
 				reader.onload = (e) ->
-					img.attr "src", e.target.result
-					uploadArea.find(".default").hide()
-					uploadArea.find(".selected").show()
+					$img.attr "src", e.target.result
+					$uploadArea.find(".default").hide()
+					$uploadArea.find(".selected").show()
 				reader.readAsDataURL(file)
 		
 			onChange = (e) ->
 				e.stopPropagation() if e
 				return unless this.files.length > 0
+				$selectPhoto.addClass("selected")
 				load(this.files[0])
 		
 			renewInput = (e) ->
-				console.log "kdjlsfkdjfklsjfkldjfkls"
 				e.stopPropagation() if e
-				img.attr "src", ""
-				uploadArea.find(".default").show()
-				uploadArea.find(".selected").hide()
-				newInput = $(input.parent().html())
-				input.replaceWith newInput
-				input = newInput
-				input.change onChange
+				$img.attr "src", ""
+				$uploadArea.find(".default").show()
+				$uploadArea.find(".selected").hide()
+				newInput = $($input.parent().html())
+				$input.replaceWith newInput
+				$input = newInput
+				$input.change onChange
+				$selectPhoto.removeClass("selected")
 		
-			input.change onChange
-			uploadArea.click () -> input.click()
-			uploadArea.find(".selected .destroy").click renewInput
+			$input.change onChange
+			$uploadArea.click () -> $input.click()
+			$uploadArea.find(".selected .destroy").click renewInput
 		
 			# D&D
-			uploadArea
+			$uploadArea
 				.bind "dragenter", (e) ->
 					e.preventDefault()
 				.bind "dragover", (e) ->
@@ -89,7 +110,7 @@ $ ->
 					e.stopPropagation()
 	
 	#-----------------------
-	# アップロードの設定
+	# カメラ撮影の設定
 	
 	do ->
 		id = "#tweet-form-take-a-photo"
@@ -98,6 +119,7 @@ $ ->
 			# 未サポートなので消す
 			$("a[href=#{id}], #{id}").hide()
 		else
+			$selectPhoto = $form.find("a.select-photo")
 			$target = $(id)
 			$defaultArea = $target.find(".default")
 			$loadingArea = $target.find(".loading")
@@ -166,6 +188,7 @@ $ ->
 				ctx.drawImage(videoCache, 0, 0);
 				$photoData.val(canvas.toDataURL("image/png"))
 				$photoName.val("pic" + (+new Date) + ".png")
+				$selectPhoto.addClass("selected2")
 			
 			$retake.click () ->
 				$take.show()
@@ -174,12 +197,14 @@ $ ->
 				videoCache.play()
 				$photoData.val("")
 				$photoName.val("")
+				$selectPhoto.removeClass("selected2")
 			
 			$cancel.click () ->
 				videoCache.pause()
 				$photoData.val("")
 				$photoName.val("")
 				setState(STATE.DEFAULT)
+				$selectPhoto.removeClass("selected2")
 			
 
 

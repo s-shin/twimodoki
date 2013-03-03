@@ -33,14 +33,15 @@ form.tweet-form {
 	input#tweet_photo {
 		display: none;
 	}
-	.upload-photo {
+	.upload-photo,
+	#tweet-form-take-a-photo {
 		text-align: center;
 		color: #333;
-		cursor: pointer;
-		border: 1px solid #666;
 		line-height: 1.5;
 		
 		.default {
+			cursor: pointer;
+			border: 1px solid #666;
 			padding: 80px 0;
 			p {
 				font-size: 40px;
@@ -48,23 +49,58 @@ form.tweet-form {
 			}
 			small {
 				font-size: 15px;
-				display: none;
 			}
 			&:hover {
 				background-color: #EEF;
 			}
 		}
-		
+	}
+	.upload-photo {
 		.selected {
+			cursor: pointer;
+			border: 1px solid #666;
 			display: none;
 			padding: 20px 0;
 			img {
 				max-height: 200px;
 			}
 		}
-		
 	}
-
+	#tweet-form-take-a-photo {
+		.loading {
+			display: none;
+			border: 1px solid #666;
+			padding: 40px;
+		}
+		.taking {
+			display: none;
+			
+			.video {
+				margin-bottom: 10px;
+				video {
+					height: 275px;
+					vertical-align: middle;
+				}
+			}
+			
+			.take, .retake, .cancel {
+				display: inline-block;
+				padding: 0.5em 1.3em;
+				border-radius: 5em;
+				margin: 0.3em 0.5em;
+				border: solid 1px #BBB;
+				color: #66A;
+				cursor: pointer;
+				background-color: #FFF;
+				
+				&:hover {
+					background-color: #888;
+					color: #FFF;
+				}
+			}
+		}
+	}	
+	
 }
 
 .ie form.tweet-form {

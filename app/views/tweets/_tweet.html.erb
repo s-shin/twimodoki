@@ -1,6 +1,6 @@
 <div class="tweet">
 	<% if tweet.user == @current_user %>
-	<a class="destroy" href="<%= tweet_path(tweet) %>" data-method="delete" rel="nofollow" data-confirm="Are you sure?">
+	<a class="destroy" href="<%= tweet_path(tweet) %>" data-method="delete" rel="nofollow" data-confirm="<%= t "views.messages.delete_confirm" %>">
 		<i class="icon-trash"></i>
 	</a>
 	<% end %>
@@ -16,7 +16,6 @@
 		</a>
 	</div>
 	<p style="display: inline">
-		<%# raw sanitize nl2br auto_link tweet.content %>
 		<%= raw auto_link hbr tweet.content %>
 		<br />
 		<small class="muted"><%=h time_ago_in_words tweet.created_at %>前</small>

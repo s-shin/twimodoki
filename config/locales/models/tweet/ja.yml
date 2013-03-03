@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      tweet: "ツイート"
+    attributes:
+      tweet:
+        content: "本文"
+        photo: "画像"
+    errors:
+      models:
+        tweet:
+          attributes:
+            content:
+              
+        

@@ -10,12 +10,19 @@
 	</div>
 	<% end %>
 
-	<small class="pull-right">140文字で入力して下さい。 <i class="icon-exclamation-sign"></i> 全角半角問わず</small>
+	<small class="pull-right">
+		140文字で入力して下さい。
+		<i class="icon-exclamation-sign"></i> 全角半角問わず
+		（<span class="word-count">0</span>/140）
+	</small>
 	
 	<div class="content-area">
 		<%= f.label :content, "いまなにしてる？", class: "big" %>
 		<%= f.text_area :content, rows: 3, class: "input-block-level" %>
 		
+		<%= hidden_field_tag :photo_data %>
+		<%= hidden_field_tag :photo_name %>
+
 		<a href="#tweet-form-photo-modal" class="select-photo" data-toggle="modal"><i class="icon-camera"></i></a>
 
 		<!-- === ダイアログここから === -->
@@ -24,7 +31,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<ul class="nav nav-tabs">
 					<li><a href="#tweet-form-upload-photo">画像アップロード</a></li>
-					<li><a href="#tweet-form-take-a-photo">写真撮影</a></li>
+					<li><a href="#tweet-form-take-a-photo">写真撮影<i class="icon-question-sign" data-toggle="tooltip" data-placement="bottom" title="Webカメラをサポートているブラウザで利用可能です。画像と同時に指定した場合には、こちらが優先されます。"></i></a></li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane" id="tweet-form-upload-photo">
@@ -39,10 +46,25 @@
 								<!-- 画像が表示される -->
 							</div>
 						</div>
+						<%# IE対策のためにここにフォーム部品を表示する %>
 						<span><%= f.file_field :photo, accept: "image/*" %></span>
 					</div>
 					<div class="tab-pane" id="tweet-form-take-a-photo">
-						<p>撮影</p>
+						<div class="default">
+							<p><i class="icon-camera"></i> 写真を撮影する</p>
+							<small>クリックすると撮影を開始します。</small>
+						</div>
+						<div class="loading">
+							<div class="indicator"></div>
+						</div>
+						<div class="taking">
+							<div class="video"></div>
+							<div class="controls">
+								<span class="take"><i class="icon-camera"></i> 撮影</span>
+								<span class="retake"><i class="icon-retweet"></i> 撮り直し</span>
+								<span class="cancel"><i class="icon-remove"></i> キャンセル</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -43,6 +43,7 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = Tweet.new(params[:tweet])
+    @tweet.set_base64_image(params[:photo_data], params[:photo_name])
     @tweet.user = @current_user
 
     respond_to do |format|

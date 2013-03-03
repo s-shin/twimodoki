@@ -42,10 +42,12 @@ gem 'paperclip', '~> 3.0'
 gem 'rmagick'
 
 # testing
-group :development, :test do
+group :test do
+  gem 'rspec'
   gem 'webrat'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'spork'
 end
 

@@ -45,6 +45,8 @@ gem 'rmagick'
 group :development, :test do
   gem 'webrat'
   gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'spork'
 end
 
 # deploy

@@ -11,7 +11,7 @@ $ ->
 	
 	do ->
 		id = "#tweet-form-photo-modal"
-		if Modernizr.draganddrop
+		if !window.device.mobile and Modernizr.draganddrop
 			$form.find("span.select-photo").remove()
 		else
 			$form.find("a[href=#{id}], id").remove()
@@ -73,11 +73,11 @@ $ ->
 					$uploadArea.find(".default").hide()
 					$uploadArea.find(".selected").show()
 				reader.readAsDataURL(file)
+				$selectPhoto.addClass("selected")
 		
 			onChange = (e) ->
 				e.stopPropagation() if e
 				return unless this.files.length > 0
-				$selectPhoto.addClass("selected")
 				load(this.files[0])
 		
 			renewInput = (e) ->
@@ -170,7 +170,7 @@ $ ->
 				# カメラのセットアップ
 				UserMedia.setup {video: true}, (err, video) ->
 					if err
-						$loadingArea.html("ウェブカメラを有効に出来ませんできた。")
+						$loadingArea.html("ウェブカメラを有効に出来ませんでした。")
 					else
 						start(video)
 

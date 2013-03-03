@@ -15,15 +15,12 @@ body.pages {
 			display: inline;
 			font-weight: bold;
 		}
-		
-		.photo {
-			float: right;
-			margin-right: 10px;
-		}
-		
+
+		.photo,
 		.destroy {
 			float: right;
-			margin-right: 10px;
+			display: inline-block;
+			padding: 0 0.5em;
 		}
 	}
 

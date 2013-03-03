@@ -10,14 +10,18 @@
 	</div>
 	<% end %>
 
-	<small class="pull-right">
-		140文字で入力して下さい。
-		<i class="icon-exclamation-sign"></i> 全角半角問わず
-		（<span class="word-count">0</span>/140）
-	</small>
 	
 	<div class="content-area">
-		<%= f.label :content, "いまなにしてる？", class: "big" %>
+		<label for="tweet_content" class="clearfix">
+			<small class="pull-right">
+				140文字以内で入力して下さい。
+				<span style="white-space: nowrap;"><i class="icon-exclamation-sign"></i> 全角半角問わず</span>
+			</small>
+			<span class="pull-left">
+				<span class="big">いまなにしてる？</span><small>（<span class="word-count">0</span>/140）</small>
+			</span>
+		</label>
+		<%# f.label :content, "いまなにしてる？", class: "big" %>
 		<%= f.text_area :content, rows: 3, class: "input-block-level" %>
 		
 		<%= hidden_field_tag :photo_data %>

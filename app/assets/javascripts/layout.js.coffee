@@ -17,14 +17,36 @@ $ ->
 		.each () ->
 			$(this).activity()
 	
+	# スクロール関係
+	do ->
+		$goToTop = $("a[href=#top]")
+		$container = $("#container")
+		$inner = $("#container-inner")
+		
+		# トップへのスクロール
+		$goToTop.click (e) ->
+			e.preventDefault()
+			top = $("a[name=top]").position().top
+			# コンテナなのが若干特殊
+			$container.animate
+				scrollTop: 0
+			, 300, "swing"
+		
+		# 1000px以上で表示
+		$goToTop.hide() if $inner.height() < 1000
+	
 	# ブラウザ判定
 	do (agent=navigator.userAgent) ->
-		window.device = device = mobile: true
-		if agent.indexOf("iPhone")
+		window.device = device =
+			mobile: true
+			iphone: false
+			ipod: false
+			android: false
+		if agent.indexOf("iPhone") != -1
 			device.iphone = true
-		else if agent.indexOf("iPod")
+		else if agent.indexOf("iPod") != -1
 			device.ipod = true
-		else if agent.indexOf("Android")
+		else if agent.indexOf("Android") != -1
 			device.android = true
 		else
 			device.mobile = false

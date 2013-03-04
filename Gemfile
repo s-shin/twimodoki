@@ -56,6 +56,10 @@ gem 'capistrano'
 gem 'capistrano_colors'
 gem 'rvm-capistrano'
 
+group :development do
+  gem 'rails-erd'
+end
+
 group :production do
   # web server for Rack
   gem 'unicorn'

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class PagesController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/pages_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-follow">#follow</a>
+    
+    <li><a href="#method-i-followers">#followers</a>
+    
+    <li><a href="#method-i-following">#following</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-registered">#registered</a>
+    
+    <li><a href="#method-i-search">#search</a>
+    
+    <li><a href="#method-i-unfollow">#unfollow</a>
+    
+    <li><a href="#method-i-user">#user</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./EmailValidator.html">EmailValidator</a>
+  
+    <li><a href="./Friendship.html">Friendship</a>
+  
+    <li><a href="./FriendshipsController.html">FriendshipsController</a>
+  
+    <li><a href="./FriendshipsHelper.html">FriendshipsHelper</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./PagesHelper.html">PagesHelper</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Tweet.html">Tweet</a>
+  
+    <li><a href="./TweetsController.html">TweetsController</a>
+  
+    <li><a href="./TweetsHelper.html">TweetsHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class PagesController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-follow" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">follow</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="follow-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">follow</span>
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">friend</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">friend</span>
+    <span class="ruby-comment"># 既に存在しているなら追加しない</span>
+    <span class="ruby-identifier">existed</span> = <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">friends</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">id</span> }
+    <span class="ruby-comment"># 同じなら追加しない</span>
+    <span class="ruby-identifier">is_same</span> = <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">friend</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">existed</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">is_same</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;フォローに失敗しました。&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">friends</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">friend</span>
+    <span class="ruby-ivar">@success</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;フォローしました。&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- follow-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- follow-method -->
+
+    
+      <div id="method-i-followers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">followers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="followers-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">followers</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">get_user_by_name</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- followers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- followers-method -->
+
+    
+      <div id="method-i-following" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">following</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="following-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">following</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">get_user_by_name</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- following-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- following-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">logged_in?</span>
+    <span class="ruby-ivar">@tweet</span> = <span class="ruby-constant">Tweet</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-comment"># 自分も含める</span>
+    <span class="ruby-ivar">@tweets</span> = <span class="ruby-constant">Kaminari</span>.<span class="ruby-identifier">paginate_array</span>(<span class="ruby-constant">Tweet</span>.<span class="ruby-identifier">find</span> <span class="ruby-value">:all</span>, {
+      <span class="ruby-identifier">conditions</span><span class="ruby-operator">:</span> [<span class="ruby-string">&quot;user_id IN (?) or user_id = ?&quot;</span>, <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">friends</span>, <span class="ruby-ivar">@current_user</span>]
+    }).<span class="ruby-identifier">page</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]).<span class="ruby-identifier">per</span>(<span class="ruby-value">10</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-registered" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">registered</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="registered-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">registered</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">notice</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- registered-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- registered-method -->
+
+    
+      <div id="method-i-search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">search</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="search-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">search</span>
+  <span class="ruby-ivar">@query</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:q</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@query</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>] <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@results</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;name like ? or another_name like ?&quot;</span>, <span class="ruby-node">&quot;%#{@query}%&quot;</span>, <span class="ruby-node">&quot;%#{@query}%&quot;</span>).<span class="ruby-identifier">page</span>(<span class="ruby-identifier">page</span>).<span class="ruby-identifier">per</span>(<span class="ruby-value">10</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- search-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- search-method -->
+
+    
+      <div id="method-i-unfollow" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unfollow</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="unfollow-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unfollow</span>
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">friend</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">friend</span>
+    <span class="ruby-identifier">friendships</span> = <span class="ruby-constant">Friendship</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;user_id = ? and friend_id = ?&quot;</span>, <span class="ruby-ivar">@current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">friend</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">friendships</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">friendships</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;同一の内容の複数のFriendshipが見つかりました。&quot;</span>              <span class="ruby-operator">+</span> <span class="ruby-string">&quot;潜在的なバグの可能性があります。&quot;</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">friendships</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">destroy</span> }
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;フォロー解除しました。&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;フォロー解除出来ませんでした。&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- unfollow-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unfollow-method -->
+
+    
+      <div id="method-i-user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="user-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">get_user_by_name</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>
+    <span class="ruby-ivar">@tweets</span> = <span class="ruby-constant">Kaminari</span>.<span class="ruby-identifier">paginate_array</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">tweets</span>).<span class="ruby-identifier">page</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- user-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

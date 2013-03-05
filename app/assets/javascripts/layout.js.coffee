@@ -1,9 +1,15 @@
 
 $ ->
 	
-	# colorbox
-	$("a[data-colorbox=true]").colorbox
-		maxWidth: "100%"
+	window.twimodoki = {}
+
+	# Ajaxで動的に生成した要素に対しても適用出来るようにexportする。
+	twimodoki.setup = setup = ($elem) ->
+		# colorbox
+		$elem.find("a[data-colorbox=true]").colorbox
+			maxWidth: "100%"
+
+	setup($("body"))
 	
 	# TODO: 古いブラウザで要動作確認
 	$("form").h5form()
@@ -16,6 +22,7 @@ $ ->
 			height: "42px"
 		.each () ->
 			$(this).activity()
+		
 	
 	# スクロール関係
 	do ->
@@ -37,7 +44,7 @@ $ ->
 	
 	# ブラウザ判定
 	do (agent=navigator.userAgent) ->
-		window.device = device =
+		twimodoki.device = device =
 			mobile: true
 			iphone: false
 			ipod: false

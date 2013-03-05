@@ -1,4 +1,4 @@
-<div class="tweet">
+<div class="tweet" data-tweet-id="<%= tweet.id %>">
 	<% if tweet.user == @current_user %>
 	<a class="destroy" href="<%= tweet_path(tweet) %>" data-method="delete" rel="nofollow" data-confirm="<%= t "views.messages.delete_confirm" %>">
 		<i class="icon-trash"></i>

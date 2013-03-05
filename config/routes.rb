@@ -18,6 +18,7 @@ Twimodoki::Application.routes.draw do
   get "pages/followers"
   get "pages/user"
   get "pages/search"
+  get "pages/latest_tweets"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

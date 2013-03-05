@@ -2,4 +2,7 @@ ja:
   views:
     messages:
       delete_confirm: "本当に削除して良いですか？"
+    pagination:
+      next: "次へ"
+      previous: "前へ"
 

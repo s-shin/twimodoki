@@ -3,11 +3,16 @@
 		<%= render "tweets/form" %>
 		<%= render partial: "notice", locals: {notice: notice} %>
 		<h2>ホーム</h2>
+		<div class="info-area">
+			<!-- 新しいツイートがあるときのお知らせ表示等 -->
+		</div>
 		<div class="tweets bordered-list">
 			<%= render @tweets %>
 		</div>
 		<%= paginate @tweets %>
 	<% end %>
+	<!-- URL受け渡し用ダミー要素 -->
+	<span style="display: none;" id="get-pages-latest-tweets-url" onClick="twimodoki.pages.sendPagesLatestTweetsUrl('<%= pages_latest_tweets_path %>')"></span>	
 <% else %>
 未ログイン
 <% end %>

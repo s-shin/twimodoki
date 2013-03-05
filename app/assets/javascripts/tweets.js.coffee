@@ -11,7 +11,7 @@ $ ->
 	
 	do ->
 		id = "#tweet-form-photo-modal"
-		if !window.device.mobile and Modernizr.draganddrop
+		if !twimodoki.device.mobile and Modernizr.draganddrop
 			$form.find("span.select-photo").remove()
 		else
 			$form.find("a[href=#{id}], id").remove()

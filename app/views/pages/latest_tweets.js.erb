@@ -17,7 +17,7 @@ $info.hide();
 $tweets = $("body.pages-index .tweets");
 newTweetsHtml = '<%= raw escape_javascript(render(@new_tweets).delete("\n")) %>';
 	<% if @new_tweets.length == 10 %>
-newTweetsHtml += "<div class='tweet'>...</div>";
+newTweetsHtml += "<div class='tweet'><%= escape_javascript link_to '...', root_path %></div>";
 	<% end %>
 $newTweets = $(newTweetsHtml);
 twimodoki.setup($newTweets); // colorboxなどのセットアップ

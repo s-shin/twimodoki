@@ -78,73 +78,91 @@ class PagesController < ApplicationController
   end
   
   def following
-    @user = get_user_by_name(params[:name])
+    @user = get_user(params[:name])
   end
   
   def followers
-    @user = get_user_by_name(params[:name])
+    @user = get_user(params[:name])
   end
   
   def user
-    @user = get_user_by_name(params[:name])
+    @user = get_user(params[:name])
     if @user
       @tweets = Kaminari.paginate_array(@user.tweets).page(params[:page])
     end
   end
   
+  # id: 表示されている最新のツイートのID。
+  # check: チェックのみか。true以外なら新しいツイート最大10件を返す。
   def latest_tweets
-    latest_tweet_id = params[:id].presence
-    @check_only = params[:check].presence
-    if latest_tweet_id
-      latest_tweet = Tweet.find(latest_tweet_id.to_i) rescue nil
-      unless latest_tweet 
-        # 不正なID
-      end
-      # 最新のツイートを取ってきて日付を比較
-      truly_latest_tweet = Tweet.find(:all, {
-        conditions: [
-          "user_id IN (?) or user_id = ?",
-          @current_user.friends, @current_user
-        ],
-        limit: 1
-      })[0]
-      # NOTE: IDの比較でも良い？
-      @latest_tweet_exists = truly_latest_tweet.created_at - latest_tweet.created_at > 0
+    latest_tweet_id = Integer(params[:id].presence) rescue nil
+    unless latest_tweet_id
+      return respond_error_by_json "idが不正です。"
+    end
+    @check_only = (params[:check].presence == "true")
+    
+    latest_tweet = Tweet.find(latest_tweet_id) rescue nil
+    unless latest_tweet 
+      return respond_error_by_json "idが不正です。"
+    end
+    
+    # 最新のツイートを取ってきて日付を比較
+    truly_latest_tweet = Tweet.find(:all, {
+      conditions: [
+        "user_id IN (?) or user_id = ?",
+        @current_user.friends, @current_user
+      ],
+      limit: 1
+    })[0]
+    @latest_tweet_exists = (truly_latest_tweet.created_at - latest_tweet.created_at > 0)
 
-      # チェックのみの場合
-      if @check_only
-        return respond_to do |format|
-          format.json { render json: @latest_tweet_exists }
-          format.js
-        end
-      end
-      
-      # 最新のものがないなら何もしない
-      return unless @latest_tweet_exists
-      
-      # latest_tweet_idより新しいツイートの取得
-      # 多いなら10件だけ取得
-      @new_tweets = Tweet.find(:all, {
-        conditions: [
-          "(user_id IN (?) or user_id = ?) and created_at > ?",
-          @current_user.friends, @current_user, latest_tweet.created_at
-        ],
-        limit: 10
-      })
-      
+    # チェックのみの場合
+    if @check_only
       return respond_to do |format|
+        format.json { render json: {exists: @latest_tweet_exists} }
         format.js
       end
+    end
+    
+    # 最新のものがないなら何もしない
+    unless @latest_tweet_exists
+      return respond_to do |format|
+        format.json { render json: {tweets: nil} }
+      end
+    end
+      
+    # latest_tweet_idより新しいツイートの取得
+    # 多いなら10件だけ取得
+    @new_tweets = Tweet.find(:all, {
+      conditions: [
+        "(user_id IN (?) or user_id = ?) and created_at > ?",
+        @current_user.friends, @current_user, latest_tweet.created_at
+      ],
+      limit: 10
+    })
+      
+    return respond_to do |format|
+      format.json { render json: {tweets: @new_tweets} }
+      format.js
     end
   end
   
   private
   
-  def get_user_by_name(name)
+  # ユーザ名が指定されればそのUserを、そうでなければログインUserを取得
+  def get_user(name)
     if name
       User.find_by_name(name) rescue nil
     else
       @current_user
+    end
+  end
+  
+  # JSON形式による簡易的なエラーの応答
+  def respond_error_by_json(msg)
+    result = {error: msg}
+    respond_to do |format|
+      format.json { render json: result }
     end
   end
   

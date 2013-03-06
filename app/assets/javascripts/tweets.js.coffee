@@ -2,9 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
+$ -> $("form.tweet-form").each ->
 
-	$form = $("form.tweet-form")
+	$form = $(this)
 	
 	#-----------------------
 	# D&D未サポートなら小規模版に
